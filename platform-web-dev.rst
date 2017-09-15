@@ -66,3 +66,14 @@ Our installation requires several prerequisites that are first installed via `Ma
     mkdir ~/Projects
     mkdir ~/Projects/DataserverGlobalLibrary
     
+Install the server
+++++++++++++++++++
+
+Now we can move on to actually installing the server components.  This guide assumes the server will be installed beneath `~/Projects`.  If you wish to install the server elsewhere you will need to adjust the steps in the remainder of the guide.
+
+#. Checkout the dataserver buildout configuration files::
+
+    cd ~/Projects
+    svn co https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/nti.dataserver-buildout nti.dataserver-buildout
+    cd nti.dataserver-buildout
+
