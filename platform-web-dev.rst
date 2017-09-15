@@ -15,30 +15,14 @@ Prerequisites
 
 Our installation requires several prerequisites that are first installed via [MacPorts](https://www.macports.org). In addition to macports installed libraries, XCode, XCode CLI Tools, and the JAVA JDK are required.
 
-1. Download/Install XCode
-2. Download/Install XCode CLI Tools
-3. Download/Install latest Oracle JDK
+1. Download and install XCode
+2. Download and install XCode CLI Tools
+3. Download and install latest Oracle JDK
 4. Install [MacPorts](https://www.macports.org)
-
-Once macports in installed the following packages need to be installed.
-
-1. `sudo port install python27`
-2. `sudo port install libxml`
-3. `sudo port install libxml2`
-4. `sudo port install nasm`
-5. `sudo port install pcre`
-6. `sudo port install cyrus-sasl2`
-7. `sudo port install graphviz-devel`
-8. `sudo port install wget`
-9. `sudo port install openjpeg`
-10. `sudo port install xmlsec`
-
-Or you can install all these at once using once command.
-
-`sudo port install python27 libxml libxml2 ...`
-
-Set python27 as the active python
-
-`sudo port select --set python python27`
-`sudo port select --set python2 python27`
+5. Once macports in installed run
+    ``sudo port install python27 libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec``
+6. Set python27 as the active python
+    ``sudo port select --set python python27``
+7. Set python27 as the active python2
+    ``sudo port select --set python2 python27``
 
