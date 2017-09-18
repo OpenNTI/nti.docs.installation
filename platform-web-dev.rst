@@ -1,17 +1,18 @@
-================================
+********************************
 Web Developer Installation Guide
-================================
+********************************
 
 This guide provides information to setup and run a local server environment to support local development of platform web components.
 
 This guide assumes a macOS installation environment.  While a similar process can be followed on a \*NIX environment your mileage may vary.
 
 Server Setup
-------------
+============
+
 Our server infrastructure uses `Buildout <http://www.buildout.org/en/latest/>`_ to install and manage server configuration and dependencies for our main application server and dependent applications.  At a high level, buildout takes care of setting up your system given a specification defined in a buildout config file.
 
 Prerequisites
-+++++++++++++
+-------------
 
 Our installation requires several prerequisites that are first installed via `MacPorts <https://www.macports.org>`_. In addition to macports installed libraries, XCode, XCode CLI Tools, and the JAVA JDK are required.
 
@@ -67,7 +68,7 @@ Our installation requires several prerequisites that are first installed via `Ma
     mkdir ~/Projects/DataserverGlobalLibrary
     
 Install the server
-++++++++++++++++++
+------------------
 
 Now we can move on to actually installing the server components.  This guide assumes the server will be installed beneath `~/Projects`.  If you wish to install the server elsewhere you will need to adjust the steps in the remainder of the guide.
 
@@ -86,7 +87,7 @@ Now we can move on to actually installing the server components.  This guide ass
     ./bin/buildout -c platform_web_developer_environment.cfg
 
 Start the server
-++++++++++++++++
+----------------
 
 At this point we should have everything we need installed and setup to run the server. The server consists of a handful of processes.  `Supervisor <http://supervisord.org>`_ is used to manage these processes so that you don't need to manage them manually.  To start the server move to the buidout directory and start the supervisor daemon.
 
@@ -111,7 +112,7 @@ Assuming everything is up you should be able to hit the server. A good litmus te
 
 
 Updating the server
-+++++++++++++++++++
+-------------------
 
 You'll want to ensure you update the server code frequently.  Most people update at least daily.  The following steps can be used to update the server.  Again, don't forget to ensure you are in the proper virtualenv.
 
@@ -136,12 +137,12 @@ You can also update specific sources using:
     ./bin/develop update my.package.name
 
 Server Scripts
-++++++++++++++
+--------------
 
 There are a number of useful scripts buildout installs in its ``bin`` directory.  This directory includes many ``nti_*`` prefixed scripts that can be used to execute admin functions in your server.  For example ``nti_create_user`` provides a command line mechanism for creating admin users.  All scripts should provide a ``-h`` arg giving unix style help output.
 
 
 
 App Installation
-----------------
+================
 
