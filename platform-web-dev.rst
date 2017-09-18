@@ -195,17 +195,13 @@ Prerequisites
 You'll need to have the following items installed before continuing.
 
 #. Install `nvm <https://github.com/creationix/nvm>`_
-#. Use nvm to install `Node.js <http://nodejs.org>`_
-
-::
+#. Use nvm to install `Node.js <http://nodejs.org>`_::
 
     nvm install node
     nvm install lts/*
     nvm alias default node
 
-#. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process
-
-::
+#. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process::
 
     npm set registry https://npm.nextthought.com
     npm login --registry https://npm.nextthought.com
