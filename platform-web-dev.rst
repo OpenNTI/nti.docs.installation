@@ -141,24 +141,13 @@ Server Scripts
 
 There are a number of useful scripts buildout installs in its ``bin`` directory.  This directory includes many ``nti_*`` prefixed scripts that can be used to execute admin functions in your server.  For example ``nti_create_user`` provides a command line mechanism for creating admin users.  All scripts should provide a ``-h`` arg giving unix style help output.
 
-
-
 App Installation
 ================
 
 The following section describes the process for setting up a local web development environment.
 
-Prerequisites
--------------
-
-You'll need to have the following items installed before continuing.
-
-* `Node.js <http://nodejs.org>`_: Use `nvm <https://github.com/creationix/nvm>`_ to install NodeJS and set the default version.
-          
-    ::
-          
-        nvm install v8
-        nvm alias default stable
+Background
+----------
 
 File naming conventions:
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,7 +158,7 @@ File naming conventions:
 * Special-Meaning: Actions.js, Api.js, Constants.js, Store.js -- these files are special.
 
 Special-Meaning files
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Files with special meaning should be consistent across all modules & libraries. They belong at the root of a module.
 
@@ -199,13 +188,25 @@ Example directory structure:
      ├ whatever.js
      └ utils.js
 
-Private npm
-^^^^^^^^^^^
 
-All internal projects at NextThought are published into a private npm instance. You will need to configure npm to point to it before you can continue. It is located at https://npm.nextthought.com. Use the credentials provided as part of your onboarding process
+Prerequisites
+-------------
+
+You'll need to have the following items installed before continuing.
+
+#. Install `nvm <https://github.com/creationix/nvm>`_
+#. Use nvm to install `Node.js <http://nodejs.org>`_
 
 ::
 
-    bash
+    nvm install node
+    nvm install lts/*
+    nvm alias default node
+
+#. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process
+
+::
+
     npm set registry https://npm.nextthought.com
     npm login --registry https://npm.nextthought.com
+
