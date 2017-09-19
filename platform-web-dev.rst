@@ -86,31 +86,6 @@ Now we can move on to actually installing the server components.  This guide ass
 
     ./bin/buildout -c platform_web_developer_environment.cfg
 
-Start the server
-----------------
-
-At this point we should have everything we need installed and setup to run the server. The server consists of a handful of processes.  `Supervisor <http://supervisord.org>`_ is used to manage these processes so that you don't need to manage them manually.  To start the server move to the buidout directory and start the supervisor daemon.
-
-::
-
-    cd ~/Projects/nti.dataserver-buildout
-    ./bin/supervisord -n
-
-You should see output that shows all the processes are running.  If you aren't sure you can use `supervisorctl` to verify the status of each process.
-
-::
-
-    ./bin/supervisorctl status
-
-If any processes are failing to start you can check the process logs in ``var/log`` to look for errors.  If you ever run into issues with the server this information is useful in debugging.
-
-Assuming everything is up you should be able to hit the server. A good litmus test is that fetching logon.ping should return a 200. I like to use `HTTPie <https://httpie.org>`_ for my command line interactions with the server although you can certainly use any REST client.
-
-::
-
-    http https://localhost:8082/dataserver2/logon.ping
-
-
 Updating the server
 -------------------
 
@@ -162,4 +137,32 @@ You'll need to have the following items installed before continuing.
 
     npm set registry https://npm.nextthought.com
     npm login --registry https://npm.nextthought.com
+
+Platform Operation
+==================
+
+Start the server
+----------------
+
+At this point we should have everything we need installed and setup to run the server. The server consists of a handful of processes.  `Supervisor <http://supervisord.org>`_ is used to manage these processes so that you don't need to manage them manually.  To start the server move to the buidout directory and start the supervisor daemon.
+
+::
+
+    cd ~/Projects/nti.dataserver-buildout
+    ./bin/supervisord -n
+
+You should see output that shows all the processes are running.  If you aren't sure you can use `supervisorctl` to verify the status of each process.
+
+::
+
+    ./bin/supervisorctl status
+
+If any processes are failing to start you can check the process logs in ``var/log`` to look for errors.  If you ever run into issues with the server this information is useful in debugging.
+
+Assuming everything is up you should be able to hit the server. A good litmus test is that fetching logon.ping should return a 200. I like to use `HTTPie <https://httpie.org>`_ for my command line interactions with the server although you can certainly use any REST client.
+
+::
+
+    http https://localhost:8082/dataserver2/logon.ping
+
 
