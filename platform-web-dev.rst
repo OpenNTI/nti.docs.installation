@@ -67,6 +67,25 @@ Our installation requires several prerequisites that are first installed via `Ma
     mkdir ~/Projects
     mkdir ~/Projects/DataserverGlobalLibrary
 
+#. Add the following entries to ``/etc/hosts``::
+
+    127.0.0.1    alpha.dev
+    127.0.0.1    connect.dev
+    127.0.0.1    demo.dev
+    127.0.0.1    edbooks.dev
+    127.0.0.1    history.dev
+    127.0.0.1    i2.dev
+    127.0.0.1    iled.dev
+    127.0.0.1    janux.dev
+    127.0.0.1    k20.dev
+    127.0.0.1    litworld.dev
+    127.0.0.1    mathcounts.dev
+    127.0.0.1    oc.dev
+    127.0.0.1    okstate.dev
+    127.0.0.1    prmia.dev
+    127.0.0.1    genius.dev
+    127.0.0.1    housing.dev
+
 Install the server
 ------------------
 
@@ -163,7 +182,7 @@ Assuming everything is up you should be able to hit the server. A good litmus te
 
 ::
 
-    http https://localhost:8082/dataserver2/logon.ping
+    http https://alpha.dev:8082/dataserver2/logon.ping
 
 Application Development Quickstart
 ----------------------------------
