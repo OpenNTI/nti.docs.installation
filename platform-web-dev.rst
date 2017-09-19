@@ -6,13 +6,8 @@ This guide provides information to setup and run a local server environment to s
 
 This guide assumes a macOS installation environment.  While a similar process can be followed on a \*NIX environment your mileage may vary.
 
-Server Setup
-============
-
-Our server infrastructure uses `Buildout <http://www.buildout.org/en/latest/>`_ to install and manage server configuration and dependencies for our main application server and dependent applications.  At a high level, buildout takes care of setting up your system given a specification defined in a buildout config file.
-
-Prerequisites
--------------
+System Preparation
+==================
 
 Our installation requires several prerequisites that are first installed via `MacPorts <https://www.macports.org>`_. In addition to macports installed libraries, XCode, XCode CLI Tools, and the JAVA JDK are required.
 
@@ -24,25 +19,26 @@ Our installation requires several prerequisites that are first installed via `Ma
 
 #. Download and install latest `Oracle JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_
 #. Install `MacPorts <https://www.macports.org/install.php>`_
-#. Once macports in installed run::
 
-    sudo port install python27 py27-pip libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec
+    #. Once macports in installed run::
 
-#. Set python27 as the active python::
+        sudo port install python27 py27-pip libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec
 
-    sudo port select --set python python27
+    #. Set python27 as the active python::
 
-#. Set python27 as the active python2::
+        sudo port select --set python python27
 
-    sudo port select --set python2 python27
+    #. Set python27 as the active python2::
 
-#. Set pip27 as the active pip::
+        sudo port select --set python2 python27
 
-    sudo port select --set pip pip27
+    #. Set pip27 as the active pip::
 
-#. Update MarkupSafe to 1.0 (Latest in MacPorts is 0.23)::
+        sudo port select --set pip pip27
 
-    sudo pip install -U markupsafe
+    #. Update MarkupSafe to 1.0 (Latest in MacPorts is 0.23)::
+
+        sudo pip install -U markupsafe
 
 #. Follow the `GitHub directions <https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/>`_ to create and add a SSH key
 
@@ -86,10 +82,26 @@ Our installation requires several prerequisites that are first installed via `Ma
     127.0.0.1    genius.dev
     127.0.0.1    housing.dev
 
-Install the server
-------------------
+#. Install `Node.js <http://nodejs.org>`_
 
-Now we can move on to actually installing the server components.  This guide assumes the server will be installed beneath `~/Projects`.  If you wish to install the server elsewhere you will need to adjust the steps in the remainder of the guide.
+    #. Install `nvm <https://github.com/creationix/nvm>`_
+    #. Use nvm to install NodeJS::
+
+        nvm install node
+        nvm install lts/*
+        nvm alias default node
+
+    #. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process::
+
+        npm set registry https://npm.nextthought.com
+        npm login --registry https://npm.nextthought.com
+
+Platform Setup
+==============
+
+Now we can move on to actually installing the platform components.  This guide assumes the server will be installed beneath `~/Projects`.  If you wish to install the server elsewhere you will need to adjust the steps in the remainder of the guide.
+
+Our server infrastructure uses `Buildout <http://www.buildout.org/en/latest/>`_ to install and manage server configuration and dependencies for our main application server and dependent applications.  At a high level, buildout takes care of setting up your system given a specification defined in a buildout config file.
 
 #. Checkout the dataserver buildout configuration files::
 
@@ -105,57 +117,6 @@ Now we can move on to actually installing the server components.  This guide ass
 
     ./bin/buildout -c platform_web_developer_environment.cfg
 
-Updating the server
--------------------
-
-You'll want to ensure you update the server code frequently.  Most people update at least daily.  The following steps can be used to update the server.  Again, don't forget to ensure you are in the proper virtualenv.
-
-::
-
-    cd ~/Projects/nti.dataserver-buildout
-    svn up
-    ./bootstrap.sh
-    ./bin/buildout -c platform_web_developer_environment.cfg
-
-Buildout provides a mechanism for updating only the source code (without running full buildout). If there are source only changes you need pulled in this is often much faster than running full buildout.
-
-::
-
-    cd ~/Projects/nti.dataserver-buildout
-    ./bin/develop update
-
-You can also update specific sources using:
-
-::
-
-    ./bin/develop update my.package.name
-
-Server Scripts
---------------
-
-There are a number of useful scripts buildout installs in its ``bin`` directory.  This directory includes many ``nti_*`` prefixed scripts that can be used to execute admin functions in your server.  For example ``nti_create_user`` provides a command line mechanism for creating admin users.  All scripts should provide a ``-h`` arg giving unix style help output.
-
-App Installation
-================
-
-The following section describes the process for setting up a local web development environment.
-
-Prerequisites
--------------
-
-You'll need to have the following items installed before continuing.
-
-#. Install `nvm <https://github.com/creationix/nvm>`_
-#. Use nvm to install `Node.js <http://nodejs.org>`_::
-
-    nvm install node
-    nvm install lts/*
-    nvm alias default node
-
-#. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process::
-
-    npm set registry https://npm.nextthought.com
-    npm login --registry https://npm.nextthought.com
 
 Platform Operation
 ==================
@@ -183,6 +144,36 @@ Assuming everything is up you should be able to hit the server. A good litmus te
 ::
 
     http https://alpha.dev:8082/dataserver2/logon.ping
+
+Updating the platform
+---------------------
+
+You'll want to ensure you update the server code frequently.  Most people update at least daily.  The following steps can be used to update the server.  Again, don't forget to ensure you are in the proper virtualenv.
+
+::
+
+    cd ~/Projects/nti.dataserver-buildout
+    svn up
+    ./bootstrap.sh
+    ./bin/buildout -c platform_web_developer_environment.cfg
+
+Buildout provides a mechanism for updating only the source code (without running full buildout). If there are source only changes you need pulled in this is often much faster than running full buildout.
+
+::
+
+    cd ~/Projects/nti.dataserver-buildout
+    ./bin/develop update
+
+You can also update specific sources using:
+
+::
+
+    ./bin/develop update my.package.name
+
+Server Scripts
+--------------
+
+There are a number of useful scripts buildout installs in its ``bin`` directory.  This directory includes many ``nti_*`` prefixed scripts that can be used to execute admin functions in your server.  For example ``nti_create_user`` provides a command line mechanism for creating admin users.  All scripts should provide a ``-h`` arg giving unix style help output.
 
 Application Development Quickstart
 ----------------------------------
