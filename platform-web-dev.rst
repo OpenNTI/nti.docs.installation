@@ -66,7 +66,7 @@ Our installation requires several prerequisites that are first installed via `Ma
 
     mkdir ~/Projects
     mkdir ~/Projects/DataserverGlobalLibrary
-    
+
 Install the server
 ------------------
 
@@ -165,4 +165,76 @@ Assuming everything is up you should be able to hit the server. A good litmus te
 
     http https://localhost:8082/dataserver2/logon.ping
 
+Application Development Quickstart
+----------------------------------
+
+Check out the web app
+
+::
+
+    git clone git@github.com:NextThought/nti.web.app
+    cd nti.web.app
+    npm install
+
+While you're working on this project, run:
+
+::
+
+    npm start
+
+To build the project
+
+::
+
+    npm run build
+
+To run the test suite
+
+::
+
+    npm test
+
+The test run using jest, you can pass the same arguments to npm test as jest
+
+
+Tips & Tricks
+=============
+
+Git Rebase on Pull
+------------------
+
+If you haven't already done so, configure ``git`` to make all new branches rebase on pull by default:
+
+::
+
+    git config branch.autosetuprebase always --global
+
+
+Set ``master``, ``develop`` to default to rebase on pull
+
+::
+
+    git config branch.master.rebase true
+    git config branch.develop.rebase true
+
+
+We cannot make this change centrally. It must be made per-clone.  This explains why you would want to rebase on pull: http://stevenharman.net/git-pull-with-automatic-rebase
+
+It basically simplifies your interactions. so you can simply ``git pull`` to get updated code, instead of ``git pull -r`` or ``git fetch && git rebase... `` etc. With out this change, a ``git pull`` will make a merge bubble, and thats just ugly.
+
+Text Editors
+------------
+
+As long as you can have a LIVE eslint plugin with your editor, you should be good to go. If you prefer an editor that can't do that, you need to run `make check` pretty regularly.
+
+* `Atom <https://atom.io/>`_ is the main editor editor used. Built on open web tech, for web tech :) You can use the package manger either in app on on the command line with ``apm`` (like ``npm``)
+
+    * Required packages
+
+        * `linter` - shows errors in files as you type/save.
+        * `linter-eslint` - linter plugin to run eslint on files.
+
+* `Visual Studio Code <http://code.visualstudio.com/>`_ (also built on Electron -- like atom) is a nice alternative.
+* `Sublime Text <http://www.sublimetext.com/>`_ is another text editor available.
+* `TextMate <http://macromates.com/download>`_
 
