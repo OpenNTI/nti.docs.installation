@@ -9,7 +9,7 @@ This guide assumes a macOS installation environment.  While a similar process ca
 System Preparation
 ==================
 
-Our installation requires several prerequisites that are first installed via `MacPorts <https://www.macports.org>`_. In addition to macports installed libraries, XCode, XCode CLI Tools, and the JAVA JDK are required.
+Our installation requires several prerequisites that are first installed via `MacPorts <https://www.macports.org/install.php>`_. In addition to macports installed libraries, XCode, XCode CLI Tools, and the JAVA JDK are required.
 
 #. Download and install XCode from the appstore
 #. Download and install XCode CLI Tools::
@@ -20,25 +20,25 @@ Our installation requires several prerequisites that are first installed via `Ma
 #. Download and install latest `Oracle JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_
 #. Install `MacPorts <https://www.macports.org/install.php>`_
 
-    #. Once macports in installed run::
+   #. Once macports is installed run::
 
-        sudo port install python27 py27-pip libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec
+       sudo port install python27 py27-pip libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec
 
-    #. Set python27 as the active python::
+   #. Set python27 as the active python::
 
-        sudo port select --set python python27
+       sudo port select --set python python27
 
-    #. Set python27 as the active python2::
+   #. Set python27 as the active python2::
 
-        sudo port select --set python2 python27
+       sudo port select --set python2 python27
 
-    #. Set pip27 as the active pip::
+   #. Set pip27 as the active pip::
 
-        sudo port select --set pip pip27
+       sudo port select --set pip pip27
 
-    #. Update MarkupSafe to 1.0 (Latest in MacPorts is 0.23)::
+   #. Update MarkupSafe to 1.0 (Latest in MacPorts is 0.23)::
 
-        sudo pip install -U markupsafe
+       sudo pip install -U markupsafe
 
 #. Follow the `GitHub directions <https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/>`_ to create and add a SSH key
 
@@ -84,17 +84,17 @@ Our installation requires several prerequisites that are first installed via `Ma
 
 #. Install `Node.js <http://nodejs.org>`_
 
-    #. Install `nvm <https://github.com/creationix/nvm>`_
-    #. Use nvm to install NodeJS::
+   #. Install `nvm <https://github.com/creationix/nvm>`_
+   #. Use nvm to install NodeJS::
 
-        nvm install node
-        nvm install lts/*
-        nvm alias default node
+       nvm install node
+       nvm install lts/*
+       nvm alias default node
 
-    #. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process::
+   #. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process::
 
-        npm set registry https://npm.nextthought.com
-        npm login --registry https://npm.nextthought.com
+       npm set registry https://npm.nextthought.com
+       npm login --registry https://npm.nextthought.com
 
 Platform Setup
 ==============
@@ -230,21 +230,23 @@ Set ``master``, ``develop`` to default to rebase on pull
 
 We cannot make this change centrally. It must be made per-clone.  This explains why you would want to rebase on pull: http://stevenharman.net/git-pull-with-automatic-rebase
 
-It basically simplifies your interactions. so you can simply ``git pull`` to get updated code, instead of ``git pull -r`` or ``git fetch && git rebase... `` etc. With out this change, a ``git pull`` will make a merge bubble, and thats just ugly.
+It basically simplifies your interactions. so you can simply ``git pull`` to get updated code, instead of ``git pull -r`` or ``git fetch && git rebase...`` etc. With out this change, a ``git pull`` will make a merge bubble, and thats just ugly.
 
 Text Editors
 ------------
 
-As long as you can have a LIVE eslint plugin with your editor, you should be good to go. If you prefer an editor that can't do that, you need to run `make check` pretty regularly.
+    As long as you can have a LIVE eslint plugin with your editor, you should be good to go. If you prefer an editor that can't do that, you need to run ``npm run check`` pretty regularly. ``JenkinsBot`` will file a bug if lint is checked in.
 
-* `Atom <https://atom.io/>`_ is the main editor editor used. Built on open web tech, for web tech :) You can use the package manger either in app on on the command line with ``apm`` (like ``npm``)
 
-    * Required packages
+* `Atom <https://atom.io/>`_ is one of our favorite text editors. You can use the package manger either in app or on the command line with ``apm`` (like ``npm``) to install packages:
 
-        * `linter` - shows errors in files as you type/save.
-        * `linter-eslint` - linter plugin to run eslint on files.
+  * Required packages
 
-* `Visual Studio Code <http://code.visualstudio.com/>`_ (also built on Electron -- like atom) is a nice alternative.
-* `Sublime Text <http://www.sublimetext.com/>`_ is another text editor available.
-* `TextMate <http://macromates.com/download>`_
+    * ``editorconfig`` - plugin to consume our project defined tabbing/newline rules.
+    * ``nuclide`` or ``atom-ide-ui`` or ``linter`` - UI suport for displaying code issues.
+    * ``linter-eslint`` - linter engine for JS files
+    * ``language-babel`` - Language support (syntax highlighting) for modern JS (above and beyond core `language-javascript`)
+
+* `Visual Studio Code <http://code.visualstudio.com/>`_ (like atom) very nice out-of-box experience.
+* `Sublime Text <http://www.sublimetext.com/>`_ As of 3.0, very clean & fast.
 
