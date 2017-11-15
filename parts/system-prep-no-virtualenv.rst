@@ -14,7 +14,7 @@ Our installation requires several prerequisites that are first installed via `Ma
 
    #. Once macports is installed run::
 
-       sudo port install python27 py27-pip libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec ghostscript
+       sudo port install python27 py27-pip libxml libxml2 nasm pcre cyrus-sasl2 graphviz-devel wget openjpeg xmlsec ghostscript pdf2svg
 
    #. Set python27 as the active python::
 
