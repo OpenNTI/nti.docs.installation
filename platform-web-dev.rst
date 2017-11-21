@@ -213,22 +213,22 @@ Tips & Tricks
 Git Rebase on Pull
 ------------------
 
-If you haven't already done so, configure ``git`` to make all new branches rebase on pull by default:
+If you haven't already done so, configure ``git`` to rebase on pull by default.
 
 ::
 
-    git config branch.autosetuprebase always --global
+    git config --global pull.rebase true
+    
 
-
-Set ``master``, ``develop`` to default to rebase on pull
+Or if you prefer to manage this per repo/branch: This sets ``master`` and ``my-feature`` to default to rebase on pull:
 
 ::
 
     git config branch.master.rebase true
-    git config branch.develop.rebase true
+    git config branch.my-feature.rebase true
 
 
-We cannot make this change centrally. It must be made per-clone.  This explains why you would want to rebase on pull: http://stevenharman.net/git-pull-with-automatic-rebase
+We cannot make this change centrally. It must be made per-clone.  This explains why we want to rebase on pull: http://stevenharman.net/git-pull-with-automatic-rebase
 
 It basically simplifies your interactions. so you can simply ``git pull`` to get updated code, instead of ``git pull -r`` or ``git fetch && git rebase...`` etc. With out this change, a ``git pull`` will make a merge bubble, and thats just ugly.
 
