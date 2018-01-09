@@ -35,9 +35,22 @@ Our installation requires several prerequisites that are first installed via `Ma
 
        sudo port select --set pip pip27
 
+   #. Set py27-virtualenvwrapper as the active virtualenvwrapper::
+
+       sudo port select --set virtualenvwrapper py27-virtualenvwrapper
+
+#. Add the following lines to ``~/.profile``::
+
+    export VIRTUALENVWRAPPER_PYTHON='/opt/local/bin/python2.7'
+    export VIRTUALENVWRAPPER_VIRTUALENV='/opt/local/bin/virtualenv-2.7'
+    export VIRTUALENVWRAPPER_VIRTUALENV_CLONE='/opt/local/bin/virtualenv-clone-2.7'
+    source /opt/local/bin/virtualenvwrapper.sh-2.7
+
+#. Run ``source ~/.profile``
+
 #. Create your virtual environment::
 
-    TBD
+    mkvirtualenv userdocs
 
 #. Follow the `GitHub directions <https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/>`_ to create and add a SSH key
 
@@ -47,12 +60,14 @@ Our installation requires several prerequisites that are first installed via `Ma
        cd ~/Projects
        git clone git@github.com:NextThought/nti.docs.platform.enduser.git
 
+   NOTE: If asked to accept the fingerprint of 'github.com', select yes.
+
 Developing Content
 ==================
 
 Each time you go to make changes to the content you should follow the flow below.
 
-#. Preparation
+#. Preparation to make edits
 
    #. Open a new terminal
    
@@ -62,6 +77,53 @@ Each time you go to make changes to the content you should follow the flow below
        cd ~/Projects/nti.docs.platform.enduser
        git checkout master
        git pull
+
+   #. If starting a new update, you will need to create a new branch to hold the work. If you are continuing work on an existing update proceed to the next step.::
+
+       git branch branchname
+       git push --set-upstream origin branchname
+      
+   NOTE: Branch names should be in the format of 'user/brief_discription_of_update_reason' e.g. 'sjones/release_lola_llama'
+   
+   #. Checkout the branch for the work at hand::
+   
+       git checkout sjones/release_lola_llama
+
+#. Edit workflow. While making changes you should cycle through the steps frequently. You should make small sets of changes at a time, preview the changes, and then commit your work frequently so nothing is lost in cases of failure or user mistake.
+
+   #. Edit and save the appropriate files in ``~/Projects/nti.docs.platform.enduser/guide``
+   
+   #. Preview changes by running the following commands in the terminal::
+   
+       make clean
+       make html
+       open ~/Projects/nti.docs.platform.enduser/_build/html/index.html
+   
+   #. Regularly commit your changes back to the repository to protect against machine failure or large errors::
+   
+       git add .
+       git commit -m "Checkpoint"
+       git push
+       
+   #. Repeat steps 1-3 until all changes are made and satisfactory or you need to stop working on it.
+
+#. At the end of the work session
+
+   #. If the update is not complete, commit and push a checkpoint of your work. Otherwise skip to the next step.::
+   
+       git add .
+       git commit -m "Checkpoint"
+       git push
+       
+   #. If the updates are complete, perform the following::
+   
+      #. Commit all outstanding changes with a commit message that summarizes the changes made. If there are no outstanding changes, this will cause an error mesage to occur. In that case we will add descriptive commit message in a latter stage.::
+      
+          git add .
+          git commit -m "Descriptive commit message"
+          git push
+
+      #. Create a pull request for your branch using the GitHub UI.
 
 Tips & Tricks
 =============
