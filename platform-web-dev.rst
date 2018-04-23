@@ -14,8 +14,8 @@ Our installation requires several prerequisites that are first installed via `Ma
 #. Download and install XCode from the appstore
 #. Download and install XCode CLI Tools::
 
-    xcode-select --install
-    xcodebuild -license
+    sudo xcode-select --install
+    sudo xcodebuild -license
 
 #. Download and install latest `Oracle JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_
 #. Install `MacPorts <https://www.macports.org/install.php>`_
