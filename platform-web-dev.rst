@@ -105,7 +105,7 @@ Our server infrastructure uses `Buildout <http://www.buildout.org/en/latest/>`_ 
 #. Checkout the dataserver buildout configuration files::
 
     cd ~/Projects
-    svn co https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/nti.dataserver-buildout nti.dataserver-buildout
+    git clone https://github.com/NextThought/nti.dataserver-buildout.git nti.dataserver-buildout
     cd nti.dataserver-buildout
 
 #. Initialize the buildout environment::
