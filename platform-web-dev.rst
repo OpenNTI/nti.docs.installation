@@ -88,12 +88,11 @@ Our installation requires several prerequisites that are first installed via `Ma
    #. Use nvm to install NodeJS::
 
        nvm install node
-       nvm install lts/*
        nvm alias default node
 
    #. Connect to `NextThought private NPM repo <https://npm.nextthought.com>`_ with the credentials provided as part of your onboarding process::
 
-       npm set registry https://npm.nextthought.com
+       npm set @nti:registry https://npm.nextthought.com
        npm login --registry https://npm.nextthought.com
 
 Platform Setup
