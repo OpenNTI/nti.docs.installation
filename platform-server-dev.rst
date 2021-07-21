@@ -48,7 +48,9 @@ First, we need to setup a version of python that's in line with what the
 buildout requires. This might seem trivial if you're new to the process,
 but time will likely prove you wrong:
 
-|MacOS python is a journey| It's generally recommended to avoid the
+|MacOS python is a journey| 
+
+It's generally recommended to avoid the
 default MacOS pre-installed system python, so let's get started by
 installing a copy of Python2.7 using macPorts:
 
