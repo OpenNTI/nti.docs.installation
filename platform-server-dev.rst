@@ -310,28 +310,34 @@ Q&A
 ---
 
 What's Buildout?
-----------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Buildout is esentially an automation tool that helps you streamline the
 creation of environments in order to test/develop software. You can find
 additional information and documentation
-`here <http://www.buildout.org/en/latest/>`__. ## What's MacPorts? You
-can think of it sort of like a package manager for MacOS. It's generally
+`here <http://www.buildout.org/en/latest/>`__. 
+
+What's MacPorts? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can think of it sort of like a package manager for MacOS. It's generally
 used to install and extend software that you might be lacking in the
 base MacOS environment. See more details
-`here <https://www.macports.org/>`__. ## Can I use a Virtual
-Environment? That's frankly up to you. Considering how fast the macOS
+`here <https://www.macports.org/>`__. 
+
+Can I use a Virtual Environment? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+That's frankly up to you. Considering how fast the macOS
 ecosystem changes, it might be more sane than going without one. At the
 same time, there's enough non-python dependencies that you'll be forced
 to keep track of OS-specific quirks anyways. So for now it's your call.
-## Can I use Homebrew instead of MacPorts? Preferably not, if you can
-avoid it. MacPorts is our standard tool for software installation, and
-this guide (among a lot of our documentation) will expect you to have
-programs installed in the expected MacPorts locations. ## What if this
-Documentation Doesn't Address my Problem? You can try the tips above for
-troubleshooting and consult with team members. If you successfully find
-a fix, please amend this document and submit a pull request detailing
-the problem and your solution!
+
+Can I use Homebrew instead of MacPorts? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Preferably not, if you can avoid it. MacPorts is our standard tool for software installation, and this guide (among a lot of our documentation) will expect you to have
+programs installed in the expected MacPorts locations. 
+
+What if this Documentation Doesn't Address my Problem? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can try the tips above for troubleshooting and consult with team members. If you successfully find a fix, please amend this document and submit a pull request detailing the problem and your solution!
 
 .. |MacOS python is a journey| image:: https://imgs.xkcd.com/comics/python_environment.png
-
