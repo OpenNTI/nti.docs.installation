@@ -178,7 +178,7 @@ bootstrapping process. Make sure you're in the
 
 ::
 
-    $ buildout bootsrap
+    $ buildout bootstrap
 
 This should generate a collection of files that now reside in the
 ``bin/`` directory.
